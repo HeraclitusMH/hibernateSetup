@@ -4,17 +4,16 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="PERSON")
-public class PersonMod implements Serializable {
+@SecondaryTables({@SecondaryTable(name="umano", pkJoinColumns={@PrimaryKeyJoinColumn(name="id") })})
+public class PersonMod extends Umano implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int idMod;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "umano_id")
+    private List<Possedimenti> possedimentiList;
 
     @Column(name="firstName")
     private String firstNameMod;
@@ -23,14 +22,6 @@ public class PersonMod implements Serializable {
     private String lastNameMod;
 
     public PersonMod() {
-    }
-
-    public int getIdMod() {
-        return idMod;
-    }
-
-    public void setIdMod(int id) {
-        this.idMod = id;
     }
 
     public String getFirstNameMod() {
@@ -48,4 +39,13 @@ public class PersonMod implements Serializable {
     public void setLastNameMod(String lastName) {
         this.lastNameMod = lastName;
     }
+
+    public List<Possedimenti> getPossedimentiList() {
+        return possedimentiList;
+    }
+
+    public void setPossedimentiList(List<Possedimenti> possedimentiList) {
+        this.possedimentiList = possedimentiList;
+    }
+
 }
