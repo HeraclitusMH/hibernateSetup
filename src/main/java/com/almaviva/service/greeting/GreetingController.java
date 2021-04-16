@@ -1,6 +1,6 @@
 package com.almaviva.service.greeting;
 
-import com.almaviva.service.persistence.model.Person;
+import com.almaviva.service.persistence.model.PersonMod;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -28,21 +28,21 @@ public class GreetingController {
     }
 
     @GetMapping("/testDB")
-    public Person person() {
+    public PersonMod person() {
         Session session = sessionFactory.openSession();
         Transaction t = session.beginTransaction();
 
-        Person person = new Person();
-        person.setFirstName("Mario");
-        person.setLastName("Rossi");
+        PersonMod personMod = new PersonMod();
+        personMod.setFirstNameMod("Mario");
+        personMod.setLastNameMod("Rossi");
 
-        session.save(person);
+        session.save(personMod);
         t.commit();
         System.out.println("successfully saved");
         sessionFactory.close();
         session.close();
 
 
-        return person;
+        return personMod;
     }
 }
