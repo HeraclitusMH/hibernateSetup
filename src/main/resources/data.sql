@@ -6,26 +6,27 @@ DROP TABLE PERSON;
 DROP TABLE UMANO;
 
  CREATE TABLE UMANO
- ( id int NOT NULL AUTO_INCREMENT,
+ ( idUmano varchar(255) NOT NULL,
    anima number(1) NOT NULL,
-   PRIMARY KEY (id)
+   PRIMARY KEY (idUmano)
  );
 
  CREATE TABLE PERSON
- ( id int NOT NULL AUTO_INCREMENT,
+ (
+   idPerson varchar(255) NOT NULL,
    firstName varchar(255) NOT NULL,
    lastName varchar(255) NOT NULL,
-   UMANO_ID INT,
-   FOREIGN KEY (UMANO_ID) REFERENCES UMANO(id),
-   PRIMARY KEY (id)
+   UMANO_ID varchar(255),
+   FOREIGN KEY (UMANO_ID) REFERENCES UMANO(idUmano),
+   PRIMARY KEY (idPerson)
  );
 
  CREATE TABLE POSSEDIMENTI
- ( id int NOT NULL AUTO_INCREMENT,
+ ( idPossedimenti int NOT NULL AUTO_INCREMENT,
    tipoPossedimenti varchar(255) NOT NULL,
-   UMANO_ID INT,
-   FOREIGN KEY (UMANO_ID) REFERENCES UMANO(id),
-   PRIMARY KEY (id)
+   UMANO_ID varchar(255),
+   FOREIGN KEY (UMANO_ID) REFERENCES UMANO(idUmano),
+   PRIMARY KEY (idPossedimenti)
  );
 */
 

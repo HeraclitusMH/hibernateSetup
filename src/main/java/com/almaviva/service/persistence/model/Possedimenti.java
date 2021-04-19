@@ -10,13 +10,10 @@ public class Possedimenti implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "umano_id")
-    private PersonMod umano_id;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name="idPossedimenti")
+    private int idPossedimenti;
 
     @Column(name="tipoPossedimenti")
     private String tipoPossedimenti;
@@ -24,12 +21,12 @@ public class Possedimenti implements Serializable {
     public Possedimenti() {
     }
 
-    public int getId() {
-        return id;
+    public int getIdPossedimenti() {
+        return idPossedimenti;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPossedimenti(int idPossedimenti) {
+        this.idPossedimenti = idPossedimenti;
     }
 
     public String getTipoPossedimenti() {
@@ -40,11 +37,4 @@ public class Possedimenti implements Serializable {
         this.tipoPossedimenti = tipoPossedimenti;
     }
 
-    public PersonMod getUmano_id() {
-        return umano_id;
-    }
-
-    public void setUmano_id(PersonMod umano_id) {
-        this.umano_id = umano_id;
-    }
 }
